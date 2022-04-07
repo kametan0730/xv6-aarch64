@@ -29,6 +29,7 @@ OBJS = \
   $K/timer.o \
   $K/virtio_disk.o \
   $K/gicv2.o \
+  $K/virtio_net.o \
 
 # Try to infer the correct TOOLPREFIX if not set
 ifndef TOOLPREFIX
@@ -52,7 +53,7 @@ LD = $(TOOLPREFIX)ld
 OBJCOPY = $(TOOLPREFIX)objcopy
 OBJDUMP = $(TOOLPREFIX)objdump
 
-CFLAGS = -Wall -Werror -Os -fno-omit-frame-pointer -mcpu=cortex-a72+nofp
+CFLAGS = -Wall -Os -fno-omit-frame-pointer -mcpu=cortex-a72+nofp
 CFLAGS += -MD
 CFLAGS += -ffreestanding -fno-common -nostdlib
 CFLAGS += -I.
@@ -103,7 +104,7 @@ $U/_forktest: $U/forktest.o $(ULIB)
 	$(OBJDUMP) -S $U/_forktest > $U/forktest.asm
 
 mkfs/mkfs: mkfs/mkfs.c $K/fs.h $K/param.h
-	gcc -Werror -Wall -I. -o mkfs/mkfs mkfs/mkfs.c
+	gcc -Wall -I. -o mkfs/mkfs mkfs/mkfs.c
 
 # Prevent deletion of intermediate files, e.g. cat.o, after first build, so
 # that disk image changes after first build are persistent until clean.  More

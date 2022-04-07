@@ -20,7 +20,6 @@
 // the address of virtio mmio register r.
 #define R(r) ((volatile uint32 *)(VIRTIO0 + (r)))
 
-#define R1(r) ((volatile uint32 *)(VIRTIO1 + (r)))
 
 
 static struct disk {
@@ -79,16 +78,6 @@ static struct disk {
 void
 virtio_disk_init(void)
 {
-    printf("loading virtio-net");
-
-
-    for(int i = 0; i < 0x200; i+=4){
-        printf("%x: %x\n", i, *R1(i));
-    }
-
-
-
-
 
 
   uint32 status = 0;
