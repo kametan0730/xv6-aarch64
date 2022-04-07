@@ -166,3 +166,6 @@ qemu-gdb: $K/kernel .gdbinit fs.img
 	@echo "*** Now run 'gdb' in another window." 1>&2
 	$(QEMU) $(QEMUOPTS) -S $(QEMUGDB)
 
+
+qemu-tap0: $K/kernel .gdbinit fs.img
+	$(QEMU) $(QEMUOPTS) -netdev tap,id=net0,ifname=tap0,script=no,downscript=no -device virtio-net-device,netdev=net0,mac=01:19:39:59:79:99,bus=virtio-mmio-bus.1

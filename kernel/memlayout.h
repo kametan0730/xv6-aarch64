@@ -39,6 +39,10 @@
 #define VIRTIO0  (KERNBASE + 0x0a000000L)
 #define VIRTIO0_IRQ  48
 
+// virtio mmio interface
+#define VIRTIO1  (KERNBASE + 0x0a000200L)
+#define VIRTIO1_IRQ  49
+
 #define TIMER0_IRQ  27
 
 // interrupt controller GICv2

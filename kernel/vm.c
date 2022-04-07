@@ -30,7 +30,9 @@ kvmmake(void)
   // virtio mmio disk interface
   kvmmap(kpgtbl, VIRTIO0, V2P(VIRTIO0), PGSIZE, PTE_DEVICE | PTE_XN);
 
-  // GICv2
+
+
+    // GICv2
   kvmmap(kpgtbl, GICV2, V2P(GICV2), 0x20000, PTE_DEVICE | PTE_XN);
 
   // map kernel text executable and read-only.
